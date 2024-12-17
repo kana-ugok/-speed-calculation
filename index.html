@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卒論</title>
+    <link href="style.css" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap");
+    </style>
+  </head>
+
+  <body>
+    <img src="imgs/rogo1.png" id="rogo1" />
+    <div id="main">
+      <p>距離</p>
+      <input id="distance" />
+      <select id="d_unit">
+        <option selected value="キロメートル">キロメートル</option>
+        <option value="メートル">メートル</option>
+        <option value="ミリメートル">ミリメートル</option>
+      </select>
+
+      <p>速さ</p>
+      <input id="velocity" />
+      <select id="v_unit">
+        <option selected value="km/h">km/h(時速)</option>
+        <option value="m/min">m/min(分速)</option>
+        <option value="m/s">m/s(秒速)</option>
+      </select>
+
+      <p>時間</p>
+      <input id="time" />
+      <select id="t_unit">
+        <option selected value="時間">時間</option>
+        <option value="分">分</option>
+        <option value="秒">秒</option>
+      </select>
+
+      <p><button id="calculation">計算</button></p>
+      <p><button id="clear">クリア</button></p>
+
+      <p id="result"></p>
+    </div>
+
+    <h1>旅人算のパターン</h1>
+    <div id="pattern">
+      <div id="card">
+        <a href="pattern1.html">
+          <h3>➊ 出会う</h3>
+          <img src="imgs/p1.png" />
+          <p>
+            AさんとBさんがある距離を向かい合って同時に出発する。<br />
+            それぞれの速さで歩くとき、二人は何分後に出会うか？
+          </p>
+          <h4>距離÷(速さA＋速さB)</h4>
+        </a>
+      </div>
+      <div id="card">
+        <a href="pattern2.html">
+          <h3>➋ 時間差で出発して出会う</h3>
+          <img src="imgs/p2.png" />
+          <p>
+            ある距離をAさんはBさんに向かって、<br />そのT分後にBさんはAさんに向かって出発する。<br />それぞれの速さで歩くとき、二人は何分後に出会うか？
+          </p>
+          <h4>(距離ー速さA×遅延時間)÷(速さA+速さB)</h4>
+        </a>
+      </div>
+      <div id="card">
+        <a href="pattern3.html">
+          <h3>➌ 追い付く</h3>
+          <img src="imgs/p3.png" />
+          <p>
+            AさんはX地点に、<br />BさんはX地点からある距離離れた場所にいる。<br />
+            それぞれの速さでY地点へと歩くとき<br />Aさんは何分後にBさんに追いつくか？
+          </p>
+          <h4>距離÷(速さAー速さB)</h4>
+        </a>
+      </div>
+      <div id="card">
+        <a href="pattern4.html">
+          <h3>➍ 時間差で出発して追い付く</h3>
+          <img src="imgs/p4.png" />
+          <p>
+            Aさんが出発した数分後に<br />Bさんが追いかけるように出発した。<br />
+            それぞれの速さで歩くとき、<br />Aさんが出発してから何分後にBさんは追いつくのか？
+          </p>
+          <h4>(速さA×遅延時間)÷(速さBー速さA)+遅延時間</h4>
+        </a>
+      </div>
+      <div id="card">
+        <a href="pattern5.html">
+          <h3>➎ （円周上で）出会う</h3>
+          <img src="imgs/p5.png" />
+          <p>
+            AさんとBさんが池の周りを反対方向に同時に進んだら<br />数分後に二人は出会った。<br />それぞれの速さで歩くとき、周りの長さは何ｍか？
+          </p>
+          <h4>(速さA+速さB)×時間</h4>
+        </a>
+      </div>
+      <div id="card">
+        <a href="pattern6.html">
+          <h3>➏ （円周上で）追い付く</h3>
+          <img src="imgs/p6.png" />
+          <p>
+            AさんとBさんが池の周りを同じ方向に同時に進んだら<br />数分後に初めて追い付いた。<br />
+            それぞれの速さで歩くとき、周りの長さは何ｍか？
+          </p>
+          <h4>(速さAー速さB)×時間</h4>
+        </a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

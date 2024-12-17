@@ -1,0 +1,105 @@
+* {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18px;
+}
+
+body {
+  text-align: center;
+}
+
+select {
+  overflow: hidden;
+  text-align: center;
+  border: none;
+  padding-right: 5px;
+  color: #406989;
+  background-color: #00000000;
+}
+
+input {
+  border: solid gray 1px;
+  width: 90px;
+  border-radius: 5px;
+}
+
+h4 input {
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  border: none;
+  background-color: #00000000;
+  font-size: 45px;
+}
+
+button {
+  background-color: white;
+  margin: 10px;
+}
+
+#pattern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #406989;
+}
+
+#card a {
+  text-decoration: none;
+}
+#card a:link {
+  color: #406989;
+}
+#card a:visited {
+  color: #406989;
+}
+
+#card {
+  margin: 1rem;
+  width: 70em;
+  padding-bottom: 50px;
+  background-color: aliceblue;
+  border-radius: 2em;
+}
+
+#card img {
+  width: 25%;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 33px;
+}
+
+#pattern p {
+  margin: 0 20px;
+}
+
+h1 {
+  margin-top: 100px;
+}
+
+h4 {
+  font-size: 45px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+h4 input {
+  outline: none;
+  color: #406989;
+  padding-top: 7px;
+}
+
+h4 div {
+  font-size: 30px;
+  display: flex;
+  align-items: flex-end;
+}
+
+#result {
+  font-size: 30px;
+}

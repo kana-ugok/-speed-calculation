@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卒論</title>
+    <link href="style2.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap");
+    </style>
+  </head>
+
+  <body>
+    <a href="index.html">これ</a>
+    <div id="pattern">
+      <div id="card">
+        <h3>➋ 時間差で出発して出会う</h3>
+        <img src="imgs/p2.png" />
+        <p>
+          AさんとBさんが
+          <input id="distance" placeholder="ある距離" />
+          <select id="d_unit">
+            <option value="km">キロメートル</option>
+            <option selected value="m">メートル</option>
+            <option value="mm">ミリメートル</option>
+          </select>
+          を向かい合って出発する。
+        </p>
+        <p>
+          Aさんが <input id="velocityA" placeholder="速さA" />
+          <select id="vA_unit">
+            <option value="km/h">km/h(時速)</option>
+            <option selected value="m/min">m/min(分速)</option>
+            <option value="m/s">m/s(秒速)</option>
+          </select>
+          、<br />その<input id="delaytime" placeholder="遅延時間" />
+          <select id="delay_unit">
+            <option value="時間">時間後</option>
+            <option selected value="分">分後</option>
+            <option value="秒">秒後</option></select
+          >にBさんが
+          <input id="velocityB" placeholder="速さB" />
+          <select id="vB_unit">
+            <option selected value="km/h">km/h(時速)</option>
+            <option selected value="m/min">m/min(分速)</option>
+            <option value="m/s">m/s(秒速)</option></select
+          >で歩くとき、 <br />Bさんが出発してから二人は
+          <select id="t_unit">
+            <option value="時間">何時間後</option>
+            <option selected value="分">何分後</option>
+            <option value="秒">何秒後</option>
+          </select>
+          に出会うか？
+        </p>
+        <h4>
+          (
+          <input id="d_output" readonly="readonly" placeholder="距離" />
+          <div id="d_unit_output"></div>
+          -(<input class="vA_output" readonly="readonly" placeholder="速さA" />
+          <div class="vA_unit_output"></div>
+          ×
+          <input id="delay_output" readonly="readonly" placeholder="遅延" />
+          <div id="delay_unit_output"></div>
+          ) ÷(
+          <input class="vA_output" readonly="readonly" placeholder="速さA" />
+          <div class="vA_unit_output"></div>
+          +<input id="vB_output" readonly="readonly" placeholder="速さB" />
+          <div id="vB_unit_output"></div>
+          )
+        </h4>
+        <p><button id="calculation">計算</button></p>
+        <p><button id="clear">クリア</button></p>
+      </div>
+    </div>
+    <div id="main">
+      <p id="result"></p>
+    </div>
+    <br /><br />
+
+    <script src="pattern2.js"></script>
+  </body>
+</html>

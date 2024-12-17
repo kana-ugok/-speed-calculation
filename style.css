@@ -1,0 +1,81 @@
+* {
+  font-family: "Zen Maru Gothic", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+}
+
+body {
+  text-align: center;
+}
+
+#rogo1 {
+  width: 30%;
+  min-width: 15em;
+  margin: 100px 0;
+}
+
+select {
+  overflow: hidden;
+  text-align: center;
+  border: none;
+  padding-right: 5px;
+}
+
+input {
+  border: solid gray 1px;
+  width: 10%;
+  border-radius: 5px;
+}
+
+button {
+  background-color: white;
+}
+
+#pattern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #406989;
+}
+
+#card a {
+  text-decoration: none;
+}
+#card a:link {
+  color: #406989;
+}
+#card a:visited {
+  color: #406989;
+}
+
+#card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 34px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+#card {
+  margin: 1rem;
+  width: 30em;
+  height: 25em;
+  background-color: aliceblue;
+  border-radius: 2em;
+}
+
+#card img {
+  height: 25%;
+  margin-bottom: 30px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+#pattern p {
+  margin: 0 20px;
+}
+
+h1 {
+  margin-top: 100px;
+}
