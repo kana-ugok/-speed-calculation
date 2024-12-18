@@ -9,6 +9,19 @@ body {
   text-align: center;
 }
 
+nav {
+  border: solid #406989 1px;
+  border-radius: 50%;
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+  display: flex;
+}
+#rogo2 {
+  width: 130px;
+  padding: 35px 15px;
+}
+
 select {
   overflow: hidden;
   text-align: center;

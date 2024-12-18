@@ -148,8 +148,8 @@ function clearFields() {
 
   // アニメーションリセット
   animationStart = false;
-  posA = 50;
-  posB = 750;
+  posA = -8;
+  posB = 8;
   noLoop();
   redraw();
 }
@@ -158,8 +158,8 @@ function clearFields() {
 function setup() {
   createCanvas(800, 600);
   background;
-  posA = 100; // Aの初期位置
-  posB = 700; // Bの初期位置
+  posA = -8; // Aの初期位置
+  posB = 8; // Bの初期位置
 }
 
 function draw() {
@@ -169,60 +169,39 @@ function draw() {
   strokeWeight(8);
   stroke(150, 150, 150);
   ellipse(400, 300, 350, 350);
+  noStroke();
+  translate(400, 300);
 
   if (animationStart) {
-    let Aspeed = velocityA;
-    let Bspeed = velocityB;
-    if (Aspeed < 2) {
-      Aspeed = velocityA * 20;
-    }
-    if (Bspeed < 2) {
-      Bspeed = velocityB * 20;
-    }
+    let Aspeed = Math.abs(velocityA).toString();
+    let Bspeed = Math.abs(velocityB).toString();
+    let Aspeed_0 = "0." + Aspeed;
+    let Bspeed_0 = "0." + Bspeed;
+    let Aspeed_r = parseFloat(Aspeed_0);
+    let Bspeed_r = parseFloat(Bspeed_0);
 
-    noStroke();
-    fill(150, 185, 200); // 人B
-    ellipse(posA, 200, 50, 50);
-    rect(posA - 25, 230, 50, 65);
+    posA -= Aspeed_r;
+    posB += Bspeed_r;
+    push();
+    rotate(posA);
+    fill(150, 185, 200);
+    ellipse(0, -255, 40, 40);
+    rect(0 - 20, -230, 40, 50);
+    pop();
+    push();
+    rotate(posB);
+    fill(155, 190, 145);
+    ellipse(0, -255, 40, 40);
+    rect(0 - 20, -230, 40, 50);
+    pop();
 
-    fill(155, 190, 145); // 人A
-    ellipse(posB, 200, 50, 50);
-    rect(posB - 25, 230, 50, 65);
-
-    fill(0);
-    textSize(20);
-    text(velocityA + "" + v_result, posA - 30, 160);
-    text(velocityB + "" + v_result, posB - 30, 160);
-
-    textSize(48);
-    text("A", posA - 16.5, 217.5);
-    text("B", posB - 16.5, 217.5);
-    // 速さに応じて位置を更新
-    posA += Aspeed / 10;
-    posB -= Bspeed / 10;
+    console.log(posA);
 
     // 位置が交差したらアニメーションを止める
-    if (posA - 1 >= posB) {
-      fill(250);
-      rect(0, 0, 800, 295);
-      noStroke();
-      fill(250, 130, 115);
-      ellipse(posA - 1, 200, 52, 52);
-      rect(posA - 27, 230, 52, 67);
-      noFill();
-      stroke(0);
-      strokeWeight(2);
-      ellipse(posA - 40, 150, 30, 30);
-      line(posA - 40, 140, posA - 40, 150);
-      line(posA - 40, 150, posA - 32, 150);
+    if (posA >= posB) {
       fill(0);
       noStroke();
       textSize(20);
-      text(
-        (velocityA + velocityB) * time.toFixed(2) + "" + d_unit,
-        posA - 20,
-        160
-      );
       noLoop();
       document.getElementById("result").textContent += " でした！";
     }
