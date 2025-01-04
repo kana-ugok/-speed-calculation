@@ -18,8 +18,8 @@ nav {
   display: flex;
 }
 #rogo2 {
-  width: 130px;
-  padding: 35px 15px;
+  width: 50px;
+  padding: 22px 15px;
 }
 
 select {
@@ -95,7 +95,7 @@ h1 {
 }
 
 h4 {
-  font-size: 45px;
+  font-size: 35px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -104,7 +104,6 @@ h4 {
 h4 input {
   outline: none;
   color: #406989;
-  padding-top: 7px;
 }
 
 h4 div {

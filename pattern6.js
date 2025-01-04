@@ -4,11 +4,13 @@ let velocityA = 0;
 let velocityB = 0;
 let time = 0;
 let animationStart = false;
-let posA = 0;
-let posB = 0;
 let t_result = "";
 let v_result = "";
 let d_unit = "";
+let posA = 0; // Aさんの現在位置
+let posB = 0.01; // Bさんの現在位置
+let ratioA = 0; // Aさんの移動比率
+let ratioB = 0; // Bさんの移動比率
 
 document.getElementById("calculation").addEventListener("click", calculate);
 document.getElementById("clear").addEventListener("click", clearFields);
@@ -131,11 +133,13 @@ function calculate() {
     time
   ).toFixed(2)} ${d_unit}`;
 
+  const totalVelocity = velocityA + velocityB;
+  ratioA = velocityA / totalVelocity;
+  ratioB = velocityB / totalVelocity;
   // アニメーションの開始
   animationStart = true;
-
-  posA = 100; // Aの初期位置
-  posB = 700; // Bの初期位置
+  posA = 0; // 円の一番上
+  posB = 0.01; // 円の一番上（逆方向から開始）
   loop(); // p5.jsのアニメーションを再スタート
 }
 
@@ -155,81 +159,51 @@ function clearFields() {
 
   // アニメーションリセット
   animationStart = false;
-  posA = 50;
-  posB = 750;
+  posA = 0;
+  posB = 0;
   noLoop();
   redraw();
 }
 
 //ここからp5.jsの設定
 function setup() {
-  createCanvas(800, 400);
-  background;
-  posA = 100; // Aの初期位置
-  posB = 700; // Bの初期位置
+  createCanvas(800, 600);
+  background(250);
+  posA = 0; // 初期位置リセット
+  posB = 0.01; // 初期位置リセット（反対側）
 }
 
 function draw() {
   background(250);
 
+  noFill();
   strokeWeight(8);
   stroke(150, 150, 150);
-  line(50, 300, 750, 300);
+  ellipse(400, 300, 350, 350);
+  noStroke();
+  translate(400, 300);
 
   if (animationStart) {
-    let Aspeed = velocityA;
-    let Bspeed = velocityB;
-    if (Aspeed < 2) {
-      Aspeed = velocityA * 20;
-    }
-    if (Bspeed < 2) {
-      Bspeed = velocityB * 20;
-    }
-
-    noStroke();
-    fill(150, 185, 200); // 人B
-    ellipse(posA, 200, 50, 50);
-    rect(posA - 25, 230, 50, 65);
-
-    fill(155, 190, 145); // 人A
-    ellipse(posB, 200, 50, 50);
-    rect(posB - 25, 230, 50, 65);
-
-    fill(0);
-    textSize(20);
-    text(velocityA + "" + v_result, posA - 30, 160);
-    text(velocityB + "" + v_result, posB - 30, 160);
-
-    textSize(48);
-    text("A", posA - 16.5, 217.5);
-    text("B", posB - 16.5, 217.5);
-    // 速さに応じて位置を更新
-    posA += Aspeed / 10;
-    posB -= Bspeed / 10;
+    push();
+    rotate(posA);
+    fill(150, 185, 200);
+    ellipse(0, -255, 40, 40); //人A
+    rect(0 - 20, -230, 40, 50); //人A
+    pop();
+    push();
+    rotate(posB);
+    fill(155, 190, 145);
+    ellipse(0, -255, 40, 40); //人B
+    rect(0 - 20, -230, 40, 50); //人B
+    pop();
+    posA += (ratioA * TWO_PI) / 60; // Aさん
+    posB += (ratioB * TWO_PI) / 60; // Bさん
 
     // 位置が交差したらアニメーションを止める
-    if (posA - 1 >= posB) {
-      fill(250);
-      rect(0, 0, 800, 295);
-      noStroke();
-      fill(250, 130, 115);
-      ellipse(posA - 1, 200, 52, 52);
-      rect(posA - 27, 230, 52, 67);
-      noFill();
-      stroke(0);
-      strokeWeight(2);
-      ellipse(posA - 40, 150, 30, 30);
-      line(posA - 40, 140, posA - 40, 150);
-      line(posA - 40, 150, posA - 32, 150);
-      fill(0);
-      noStroke();
-      textSize(20);
-      text(
-        (velocityA + velocityB) * time.toFixed(2) + "" + d_unit,
-        posA - 20,
-        160
-      );
-      noLoop();
+    const angleDifference = abs((posA - posB + TWO_PI) % TWO_PI); // 角度差を計算
+    if (angleDifference < 0.05) {
+      animationStart = false; // アニメーション終了
+      noLoop(); // アニメーションを停止
       document.getElementById("result").textContent += " でした！";
     }
   }
