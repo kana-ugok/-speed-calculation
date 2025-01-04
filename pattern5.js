@@ -184,10 +184,9 @@ function draw() {
     rect(0 - 20, -230, 40, 50); //人A
     textSize(35);
     fill(0);
-    text("A", posA - 45, -280);
+    text("A", posA - 15, -240);
     textSize(20);
-    text(velocityA + "" + v_result, posA - 20, -280);
-
+    text(velocityA + "" + v_result, posA - 35, -280);
     pop();
     push();
     rotate(posB);
@@ -196,13 +195,12 @@ function draw() {
     rect(0 - 20, -230, 40, 50); //人B
     textSize(35);
     fill(0);
-    text("B", posB - 5, -280);
+    text("B", posB - 10, -240);
     textSize(20);
-    text(velocityB + "" + v_result, posB + 25, -280);
+    text(velocityB + "" + v_result, posB - 15, -280);
     pop();
     posA -= (ratioA * TWO_PI) / 60; // Aさんは反時計回り（減少）
     posB += (ratioB * TWO_PI) / 60; // Bさんは時計回り（増加）
-
     // 位置が交差したらアニメーションを止める
     const angleDifference = abs((posA - posB + TWO_PI) % TWO_PI); // 角度差を計算
     if (angleDifference < 0.1) {
