@@ -222,7 +222,7 @@ function draw() {
     text(velocityA + "" + v_result, posA - 30, 160);
     text(velocityB + "" + v_result, posB - 30, 160);
 
-    textSize(48);
+    textSize(35);
     text("A", posA - 16.5, 217.5);
     text("B", posB - 16.5, 217.5);
     // 速さに応じて位置を更新

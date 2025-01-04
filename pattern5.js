@@ -182,12 +182,23 @@ function draw() {
     fill(150, 185, 200);
     ellipse(0, -255, 40, 40); //人A
     rect(0 - 20, -230, 40, 50); //人A
+    textSize(35);
+    fill(0);
+    text("A", posA - 45, -280);
+    textSize(20);
+    text(velocityA + "" + v_result, posA - 20, -280);
+
     pop();
     push();
     rotate(posB);
     fill(155, 190, 145);
     ellipse(0, -255, 40, 40); //人B
     rect(0 - 20, -230, 40, 50); //人B
+    textSize(35);
+    fill(0);
+    text("B", posB - 5, -280);
+    textSize(20);
+    text(velocityB + "" + v_result, posB + 25, -280);
     pop();
     posA -= (ratioA * TWO_PI) / 60; // Aさんは反時計回り（減少）
     posB += (ratioB * TWO_PI) / 60; // Bさんは時計回り（増加）
@@ -196,6 +207,22 @@ function draw() {
     const angleDifference = abs((posA - posB + TWO_PI) % TWO_PI); // 角度差を計算
     if (angleDifference < 0.1) {
       animationStart = false;
+      fill(250);
+      rect(-400, -300, 800, 600);
+      noFill();
+      strokeWeight(8);
+      stroke(150, 150, 150);
+      ellipse(0, 0, 350, 350);
+      noStroke();
+      push();
+      rotate(posB);
+      fill(250, 130, 115);
+      ellipse(0, -255, 40, 40);
+      rect(0 - 20, -230, 40, 50);
+      pop();
+      fill(0);
+      textSize(30);
+      text(((velocityA + velocityB) * time).toFixed(2) + "" + d_unit, -70, 0);
       noLoop();
       document.getElementById("result").textContent += " でした！";
     }
