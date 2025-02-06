@@ -136,7 +136,7 @@ function calculate() {
   animationStart = true;
 
   posA = 100; // Aの初期位置
-  posB = 300; // Bの初期位置
+  posB = 200; // Bの初期位置
   loop(); // p5.jsのアニメーションを再スタート
 }
 
@@ -156,7 +156,7 @@ function clearFields() {
 
   // アニメーションリセット
   animationStart = false;
-  posA = 50;
+  posA = 100;
   posB = 200;
   noLoop();
   redraw();
@@ -167,7 +167,7 @@ function setup() {
   createCanvas(800, 400);
   background;
   posA = 100; // Aの初期位置
-  posB = 300; // Bの初期位置
+  posB = 200; // Bの初期位置
 }
 
 function draw() {

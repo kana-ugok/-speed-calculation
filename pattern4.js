@@ -9,6 +9,7 @@ let v_result = "";
 let t_unit = "";
 let delaytime = 0;
 let delay_result = "";
+let startFrame;
 
 document.getElementById("calculation").addEventListener("click", calculate);
 document.getElementById("clear").addEventListener("click", clearFields);
@@ -29,6 +30,7 @@ function calculate() {
   const delay_unit = document.getElementById("delay_unit").value;
   const delay_output = document.querySelectorAll(".delay_output");
   const delay_unit_output = document.querySelectorAll(".delay_unit_output");
+  startFrame = frameCount;
 
   //アウトプットに値の読み取り
 
@@ -148,7 +150,7 @@ function calculate() {
   animationStart = true;
 
   posA = 100; // Aの初期位置
-  posB = 700; // Bの初期位置
+  posB = 200; // Bの初期位置
 
   loop(); // p5.jsのアニメーションを再スタート
 }
@@ -177,8 +179,8 @@ function clearFields() {
 
   // アニメーションリセット
   animationStart = false;
-  posA = 50;
-  posB = 750;
+  posA = 100;
+  posB = 200;
   noLoop();
   redraw();
 }
@@ -188,7 +190,7 @@ function setup() {
   createCanvas(800, 400);
   background;
   posA = 100; // Aの初期位置
-  posB = 700; // Bの初期位置
+  posB = 200; // Bの初期位置
 }
 
 function draw() {
@@ -226,8 +228,10 @@ function draw() {
     text("A", posA - 16.5, 217.5);
     text("B", posB - 16.5, 217.5);
     // 速さに応じて位置を更新
-    posA += Aspeed / 10;
-    posB -= Bspeed / 10;
+    if (frameCount - startFrame >= 60) {
+      posA += Aspeed / 10;
+    }
+    posB += Bspeed / 10;
 
     // 位置が交差したらアニメーションを止める
     if (posA - 1 >= posB) {

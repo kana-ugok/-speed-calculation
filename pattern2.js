@@ -11,6 +11,7 @@ let v_result = "";
 let t_unit = "";
 let delaytime = 0;
 let delay_result = "";
+let startFrame;
 
 document.getElementById("calculation").addEventListener("click", calculate);
 document.getElementById("clear").addEventListener("click", clearFields);
@@ -33,6 +34,7 @@ function calculate() {
   const delay_unit = document.getElementById("delay_unit").value;
   const delay_output = document.getElementById("delay_output");
   const delay_unit_output = document.getElementById("delay_unit_output");
+  startFrame = frameCount;
 
   //アウトプットに値の読み取り
   if (distance) {
@@ -247,7 +249,9 @@ function draw() {
     text("B", posB - 16.5, 217.5);
     // 速さに応じて位置を更新
     posA += Aspeed / 10;
-    posB -= Bspeed / 10;
+    if (frameCount - startFrame >= 60) {
+      posB -= Bspeed / 10;
+    }
 
     // 位置が交差したらアニメーションを止める
     if (posA - 1 >= posB) {

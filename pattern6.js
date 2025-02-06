@@ -201,7 +201,7 @@ function draw() {
 
     // 位置が交差したらアニメーションを止める
     const angleDifference = abs((posA - posB + TWO_PI) % TWO_PI); // 角度差を計算
-    if (angleDifference < 0.05) {
+    if (angleDifference < 0.03 || angleDifference > TWO_PI - 0.03) {
       animationStart = false; // アニメーション終了
       noLoop(); // アニメーションを停止
       document.getElementById("result").textContent += " でした！";
